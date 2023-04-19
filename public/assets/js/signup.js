@@ -15,7 +15,7 @@ function getCookie(cname) {
 }
 const signUp = document.getElementById('signup-form')
 if (getCookie('userToken').trim()) {
-    window.location.href = 'normal/clue-1'
+    window.location.href = '/login'
 }
 function validate() {
     const email = document.getElementById("email").value
@@ -61,7 +61,21 @@ async function postData(url, data) {
         contentType: "application/json",
         dataType: 'json'
     }).then((response) => {
-        setCookie('userToken', response.data)
-        window.location.href = 'normal/clue-1'
+        if (response.status = "success") {
+            setCookie('userToken', response.data)
+            window.location.href = '/treasure'
+        } else {
+            window.alert("Error : " + response.message);
+        }
+
     })
 }
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () =>
+container.classList.add('right-panel-active'));
+
+signInButton.addEventListener('click', () =>
+container.classList.remove('right-panel-active'));

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clue 3</title>
-    <link rel="stylesheet" href="assets/css/clue3.css">
+    <link rel="stylesheet" href="/assets/css/clue3.css">
 
 
     <title>Clue 3, 4, 5</title>
@@ -33,14 +33,14 @@
     </div>
     <div class="drag-drop-container" style="display: flex;justify-content: center;">
         <div style="position: relative;"><img class="drag-drop-item" draggable="true"
-                src="assets/img/soap-modified.png" alt="Soap" width="30" height="30" style="
+                src="/assets/img/soap-modified.png" alt="Soap" width="30" height="30" style="
     position: absolute;
     top: 307px;
     left: 358px;
     transform: rotateZ(13deg);
     opacity: 0.7;
 ">
-            <img class="drag-drop-item" draggable="true" src="assets/img/insomnia.jpg" alt="Insomnia" width="70"
+            <img class="drag-drop-item" draggable="true" src="/assets/img/insomnia.jpg" alt="Insomnia" width="70"
                 height="90" style="
     position: absolute;
     top: 510px;
@@ -49,7 +49,7 @@
     width: 100px;
     left: 382px;
 ">
-            <img class="drag-drop-item" draggable="true" src="assets/img/mayhem.jpeg" alt="Project Mayhem"
+            <img class="drag-drop-item" draggable="true" src="/assets/img/mayhem.jpeg" alt="Project Mayhem"
                 width="128" height="128" style="
     position: absolute;
     top: 140px;
@@ -60,10 +60,22 @@
     opacity: 0.6;
 ">
         </div>
-        <img src="assets/img/basement.jpg" alt="Flowers in Chania" width="800" height="700">
+        <img src="/assets/img/basement.jpg" alt="Flowers in Chania" width="800" height="700">
     </div>
-
-    <script src="assets/js/clue3.js"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script>
+    async function setStep(data) {
+        $.ajax({
+            type: 'POST',
+            url: "/setStep/",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: 'json'
+        }).then((response) => {
+            window.location.href = '/treasureHunt'
+        })
+    }</script>
+    <script src="/assets/js/clue3.js"></script>
 </body>
 
 </html>

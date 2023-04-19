@@ -3,13 +3,13 @@
 
 <head>
     <title>Treasure Hunt</title>
-    <link rel="stylesheet" href="assets/css/clue2.css">
+    <link rel="stylesheet" href="/assets/css/clue2.css">
     <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 
 <body>
-    <li><a href="/veiws/clue3.html" id="clue3-link" class="hidden">Clue3</a></li>
+    <li><a href="/clue3/" id="clue3-link" class="hidden">Clue3</a></li>
     <h1>Clue 2</h1>
     <div class="question-container">
         <h2 id="h2i">What is the first rule of Fight Club?</h2>
@@ -33,7 +33,20 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <script src="assets/js/clue2.js"></script>
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
+    <script>
+    async function setStep(data) {
+        $.ajax({
+            type: 'POST',
+            url: "/setStep/",
+            data: JSON.stringify(data),
+            contentType: "application/json",
+            dataType: 'json'
+        }).then((response) => {
+            window.location.href = '/treasureHunt'
+        })
+    }</script>
+    <script src="/assets/js/clue2.js"></script>
 </body>
 
 </html>

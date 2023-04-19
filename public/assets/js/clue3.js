@@ -73,12 +73,23 @@ class DragAndDrop {
                 if (soap.value && insomnia.value && projectMayhem.value) {
 
                 } else {
-                    window.location.href = 'treasure.html';
+                    $.ajax({
+                        type: 'POST',
+                        url: "/attempts",
+                        contentType: "application/json",
+                        dataType: 'json'
+                    });
+                    setStep({step:4});
                     // alert('Please fill all the input fields!');
                 }
             } else {
-                window.location.href = "DeadEND.html";
-
+                $.ajax({
+                    type: 'POST',
+                    url: "/deadEnds/",
+                    contentType: "application/json",
+                    dataType: 'json'
+                });
+                setStep({step:5});
                 alert('Incorrect answer!');
             }
         });
@@ -106,7 +117,13 @@ projectMayhem.addEventListener("input", validateInputs);
 
 submitButton.addEventListener("click", function () {
     if (soap.value && insomnia.value && projectMayhem.value) {
-        window.location.href = "DeadEND.html";
+        $.ajax({
+            type: 'POST',
+            url: "/deadEnds/",
+            contentType: "application/json",
+            dataType: 'json'
+        });
+        setStep({step:5});
     }
 });
 

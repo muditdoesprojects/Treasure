@@ -6,17 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treasure Hunt</title>
-    <link rel="stylesheet" href="assets/css/test.css">
+    <link rel="stylesheet" href="/assets/css/test.css">
 
 </head>
 
 <body>
     <nav>
         <ul>
-            <li><a href="#">Home</a></li>
+            <li>
+                <h2>Clue1<h2>
+            </li>
 
             <!-- <li><a href="#">Clue 3</a></li> -->
-            <li><a href="clue2.html" id="clue-2-link">Clue 2</a></li>
+            <li><button onclick="setStep({step : 2})" id="clue-2-link">Clue 2</button></li>
             <button id="button1" onclick="myFunction()">💡</button><!-- -->
         </ul>
 
@@ -32,7 +34,7 @@
                 your next clue..</p>
         </div>
         <div id="hidden-image-container">
-            <img src="smile.jpg" alt="hidden-smiley-face" class="hidden-image">
+            <img src="/assets/img/smile.jpg" alt="hidden-smiley-face" class="hidden-image">
         </div>
     </footer>
 
@@ -48,8 +50,22 @@
     <!-- <div id="transparent-image-container">
         <img src="transparent.png" alt="transp2arent-image" class="transparent-image">
     </div> -->
-
+    <script src="/assets/js/jquery-3.2.1.min.js"></script>
     <script src="/assets/js/test.js"></script>
+    <script>
+        async function setStep(data) {
+            $.ajax({
+                type: 'POST',
+                url: "/setStep/",
+                data: JSON.stringify(data),
+                contentType: "application/json",
+                dataType: 'json'
+            }).then((response) => {
+                window.location.href = '/treasureHunt'
+            })
+        }
+    </script>
+
 </body>
 
 </html>

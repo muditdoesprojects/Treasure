@@ -26,10 +26,10 @@ function revealImage() {
 // Check if the hidden smiley face image has been found
 function checkSmileyFace() {
     if (hiddenImage.style.display === "block") {
-        clue2Link.href = "clue2.html";
+        //do nothing
     }
     else {
-        alert("You need to find the hidden smiley face first!");
+        // alert("You need to find the hidden smiley face first!");
     }
 }
 

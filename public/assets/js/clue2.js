@@ -21,7 +21,7 @@ function checkAnswer() {
                 reverseButtons: true
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "clue3.html";
+                    setStep({step:3});
                 } else if (result.dismiss === Swal.DismissReason.cancel) {
                     swalWithBootstrapButtons.fire(
                         'Okay',
@@ -40,7 +40,13 @@ function checkAnswer() {
             document.getElementById("submit-btn").classList.add('hidden');
             document.getElementById("clear-btn").classList.add('hidden');
             document.getElementById("error-msg").textContent = "You got it! Click the button to go to the next clue.";
-            window.location.href = "DeadEND.html";
+            $.ajax({
+                type: 'POST',
+                url: "/deadEnds/",
+                contentType: "application/json",
+                dataType: 'json'
+            });
+            setStep({step:5});
         } else {
             document.getElementById("error-msg").textContent = "Sorry, that's not correct. Please try again.";
         }
